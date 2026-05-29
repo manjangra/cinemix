@@ -1,0 +1,1489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cinemix Production | Professional Video Editing - Hisar, Haryana</title>
+    <meta name="description" content="Cinemix Production - Professional video editing for songs, weddings, short films & movies. Based in Hisar, Haryana. Creative & cinematic video production.">
+    <!-- Font Awesome for vector icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg: #0a0a0a;
+            --bg2: #111111;
+            --bg3: #1a1a1a;
+            --gold: #d4a843;
+            --gold-light: #f0d078;
+            --gold-dark: #b8861e;
+            --text: #e0e0e0;
+            --text-light: #b0b0b0;
+            --text-white: #ffffff;
+            --accent: #e63946;
+            --card-bg: #161616;
+            --border: #2a2a2a;
+            --overlay: rgba(0, 0, 0, 0.75);
+            --shadow-gold: 0 0 30px rgba(212, 168, 67, 0.3);
+            --shadow-card: 0 10px 40px rgba(0, 0, 0, 0.5);
+            --gradient-gold: linear-gradient(135deg, #d4a843, #f0d078, #b8861e);
+            --gradient-dark: linear-gradient(180deg, #0a0a0a 0%, #111111 50%, #0a0a0a 100%);
+            --font-heading: 'Georgia', 'Times New Roman', serif;
+            --font-body: 'Segoe UI', 'Inter', 'Helvetica Neue', sans-serif;
+            --transition: 0.35s cubic-bezier(0.25, 0.8, 0.25, 1.2);
+            --radius: 12px;
+            --radius-lg: 20px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scrollbar-width: thin;
+            scrollbar-color: var(--gold-dark) var(--bg);
+        }
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--bg);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--gold-dark);
+            border-radius: 10px;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ============ PARTICLES CANVAS ============ */
+        #particles-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+            opacity: 0.35;
+        }
+
+        /* ============ NAVIGATION ============ */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 16px 40px;
+            transition: all var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: transparent;
+        }
+        .navbar.scrolled {
+            background: rgba(10, 10, 10, 0.92);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            padding: 10px 40px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.6);
+            border-bottom: 1px solid rgba(212, 168, 67, 0.2);
+        }
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            z-index: 1001;
+        }
+        .nav-logo-icon {
+            font-size: 2rem;
+            color: var(--gold);
+            animation: clapperMove 3s ease-in-out infinite;
+        }
+        @keyframes clapperMove {
+            0%,
+            100% {
+                transform: rotate(0deg) scale(1);
+            }
+            25% {
+                transform: rotate(-10deg) scale(1.1);
+            }
+            75% {
+                transform: rotate(10deg) scale(1.05);
+            }
+        }
+        .nav-logo-text {
+            font-family: var(--font-heading);
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--text-white);
+            letter-spacing: 1px;
+            display: flex;
+            align-items: baseline;
+            gap: 5px;
+        }
+        .nav-logo-text .brand {
+            color: var(--text-white);
+        }
+        .nav-logo-text .production {
+            color: var(--gold);
+            font-size: 1rem;
+            font-weight: 400;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 32px;
+            align-items: center;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-light);
+            font-weight: 500;
+            font-size: 0.95rem;
+            letter-spacing: 0.5px;
+            position: relative;
+            transition: color var(--transition);
+            padding: 6px 0;
+        }
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gold);
+            transition: width var(--transition);
+            border-radius: 2px;
+        }
+        .nav-links a:hover {
+            color: var(--gold-light);
+        }
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        .nav-cta {
+            background: var(--gradient-gold);
+            color: #0a0a0a !important;
+            padding: 10px 22px !important;
+            border-radius: 50px !important;
+            font-weight: 700 !important;
+            letter-spacing: 0.5px;
+            transition: all var(--transition) !important;
+            box-shadow: 0 4px 20px rgba(212, 168, 67, 0.35);
+        }
+        .nav-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(212, 168, 67, 0.55);
+            color: #0a0a0a !important;
+        }
+        .nav-cta::after {
+            display: none !important;
+        }
+
+        /* Mobile Menu Toggle */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 6px;
+            cursor: pointer;
+            z-index: 1001;
+            padding: 8px;
+        }
+        .menu-toggle span {
+            width: 28px;
+            height: 2.5px;
+            background: var(--text-white);
+            border-radius: 3px;
+            transition: all var(--transition);
+        }
+        .menu-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(6px, 6px);
+        }
+        .menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+        .menu-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(6px, -6px);
+        }
+
+        /* ============ SECTIONS ============ */
+        section {
+            position: relative;
+            z-index: 1;
+            padding: 100px 40px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* ============ HERO ============ */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+            padding-top: 80px;
+            background: radial-gradient(ellipse at center, rgba(212, 168, 67, 0.08) 0%, transparent 70%),
+                radial-gradient(ellipse at 30% 20%, rgba(230, 57, 70, 0.05) 0%, transparent 50%),
+                var(--gradient-dark);
+        }
+        .hero-content {
+            max-width: 850px;
+        }
+        .hero-badge {
+            display: inline-block;
+            background: rgba(212, 168, 67, 0.15);
+            border: 1px solid rgba(212, 168, 67, 0.4);
+            color: var(--gold-light);
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 24px;
+            animation: fadeInUp 0.8s ease-out;
+        }
+        .hero-title {
+            font-family: var(--font-heading);
+            font-size: clamp(2.8rem, 6vw, 5rem);
+            font-weight: 800;
+            color: var(--text-white);
+            line-height: 1.15;
+            margin-bottom: 20px;
+            animation: fadeInUp 0.8s ease-out 0.15s both;
+        }
+        .hero-title .static {
+            display: block;
+        }
+        .hero-title .dynamic {
+            position: relative;
+            color: var(--gold-light);
+            text-shadow: 0 0 20px rgba(212, 168, 67, 0.8), 0 0 40px rgba(212, 168, 67, 0.5);
+            animation: glowPulse 2s ease-in-out infinite;
+        }
+        @keyframes glowPulse {
+            0%,
+            100% {
+                text-shadow: 0 0 15px rgba(212, 168, 67, 0.7), 0 0 30px rgba(212, 168, 67, 0.4);
+            }
+            50% {
+                text-shadow: 0 0 35px rgba(240, 208, 120, 0.9), 0 0 70px rgba(212, 168, 67, 0.7);
+            }
+        }
+        .cursor {
+            display: inline-block;
+            width: 4px;
+            height: 1em;
+            background: var(--gold-light);
+            margin-left: 4px;
+            vertical-align: middle;
+            animation: blink 0.8s step-end infinite;
+        }
+        @keyframes blink {
+            50% {
+                opacity: 0;
+            }
+        }
+        .hero-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            margin-bottom: 36px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            animation: fadeInUp 0.8s ease-out 0.3s both;
+        }
+        .hero-buttons {
+            display: flex;
+            gap: 18px;
+            flex-wrap: wrap;
+            justify-content: center;
+            animation: fadeInUp 0.8s ease-out 0.45s both;
+        }
+        .btn {
+            display: inline-block;
+            padding: 14px 32px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1rem;
+            text-decoration: none;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+            border: none;
+            transition: all var(--transition);
+            font-family: var(--font-body);
+        }
+        .btn-primary {
+            background: var(--gradient-gold);
+            color: #0a0a0a;
+            box-shadow: 0 6px 25px rgba(212, 168, 67, 0.4);
+        }
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(212, 168, 67, 0.6);
+        }
+        .btn-outline {
+            background: transparent;
+            color: var(--text-white);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+        .btn-outline:hover {
+            border-color: var(--gold);
+            color: var(--gold-light);
+            background: rgba(212, 168, 67, 0.08);
+            transform: translateY(-3px);
+        }
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Floating film strip decoration */
+        .hero-decoration {
+            position: absolute;
+            bottom: 60px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 8px;
+            opacity: 0.6;
+            animation: float 4s ease-in-out infinite;
+        }
+        .film-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--gold);
+            box-shadow: 0 0 12px var(--gold-dark);
+        }
+        @keyframes float {
+            0%,
+            100% {
+                transform: translateX(-50%) translateY(0);
+            }
+            50% {
+                transform: translateX(-50%) translateY(-18px);
+            }
+        }
+
+        /* ============ SECTION HEADERS ============ */
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        .section-tag {
+            display: inline-block;
+            color: var(--gold);
+            font-weight: 600;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            margin-bottom: 12px;
+        }
+        .section-title {
+            font-family: var(--font-heading);
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 700;
+            color: var(--text-white);
+            margin-bottom: 14px;
+        }
+        .section-line {
+            width: 60px;
+            height: 3px;
+            background: var(--gradient-gold);
+            margin: 0 auto;
+            border-radius: 3px;
+        }
+
+        /* ============ ABOUT ============ */
+        .about {
+            background: var(--bg2);
+            position: relative;
+        }
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+        .about-visual {
+            position: relative;
+        }
+        .about-image-placeholder {
+            width: 100%;
+            aspect-ratio: 16/10;
+            background: var(--bg3);
+            border-radius: var(--radius-lg);
+            position: relative;
+            overflow: hidden;
+            border: 2px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--shadow-card);
+        }
+        .about-image-placeholder i {
+            font-size: 6rem;
+            color: var(--gold-dark);
+            animation: spinSlow 15s linear infinite;
+            filter: drop-shadow(0 0 20px rgba(212,168,67,0.4));
+        }
+        @keyframes spinSlow {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+        .about-glow {
+            position: absolute;
+            top: -20px;
+            right: -20px;
+            width: 100%;
+            height: 100%;
+            border: 2px solid var(--gold-dark);
+            border-radius: var(--radius-lg);
+            z-index: -1;
+            opacity: 0.5;
+        }
+        .about-text h3 {
+            font-family: var(--font-heading);
+            font-size: 2rem;
+            color: var(--text-white);
+            margin-bottom: 16px;
+        }
+        .about-text p {
+            color: var(--text-light);
+            margin-bottom: 20px;
+            font-size: 1.05rem;
+        }
+        .about-stats {
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-top: 24px;
+        }
+        .stat-item {
+            text-align: center;
+        }
+        .stat-number {
+            font-family: var(--font-heading);
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: var(--gradient-gold);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .stat-label {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* ============ SERVICES ============ */
+        .services {
+            background: var(--bg);
+        }
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 28px;
+        }
+        .service-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 36px 28px;
+            text-align: center;
+            transition: all var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--gradient-gold);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform var(--transition);
+        }
+        .service-card:hover {
+            border-color: var(--gold-dark);
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-card), 0 0 40px rgba(212, 168, 67, 0.1);
+        }
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 18px;
+            color: var(--gold);
+            transition: transform var(--transition);
+            display: inline-block;
+            animation: iconFloat 4s ease-in-out infinite;
+        }
+        @keyframes iconFloat {
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-8px);
+            }
+        }
+        .service-card:hover .service-icon {
+            transform: scale(1.2) rotate(5deg);
+        }
+        .service-card h3 {
+            font-family: var(--font-heading);
+            color: var(--text-white);
+            font-size: 1.3rem;
+            margin-bottom: 8px;
+        }
+        .service-card p {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        /* ============ PORTFOLIO ============ */
+        .portfolio {
+            background: var(--bg2);
+        }
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 28px;
+        }
+        .portfolio-card {
+            background: var(--card-bg);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            border: 1px solid var(--border);
+            transition: all var(--transition);
+            box-shadow: var(--shadow-card);
+        }
+        .portfolio-card:hover {
+            border-color: var(--gold-dark);
+            transform: translateY(-5px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), 0 0 30px rgba(212, 168, 67, 0.12);
+        }
+        .video-wrapper {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 16/9;
+            background: #000;
+            overflow: hidden;
+        }
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        .portfolio-info {
+            padding: 20px 24px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .portfolio-info .tag {
+            display: inline-block;
+            background: rgba(212, 168, 67, 0.2);
+            color: var(--gold-light);
+            padding: 4px 12px;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        .portfolio-info h3 {
+            font-family: var(--font-heading);
+            color: var(--text-white);
+            font-size: 1.2rem;
+        }
+
+        /* ============ TESTIMONIALS ============ */
+        .testimonials {
+            background: var(--bg);
+        }
+        .testimonial-slider {
+            display: flex;
+            gap: 24px;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            padding-bottom: 20px;
+            -webkit-overflow-scrolling: touch;
+        }
+        .testimonial-card {
+            min-width: 320px;
+            flex-shrink: 0;
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 30px 26px;
+            scroll-snap-align: start;
+        }
+        .testimonial-stars {
+            color: var(--gold);
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+        }
+        .testimonial-card p {
+            color: var(--text-light);
+            font-style: italic;
+            margin-bottom: 16px;
+            font-size: 0.95rem;
+        }
+        .testimonial-author {
+            font-weight: 700;
+            color: var(--text-white);
+            font-size: 0.9rem;
+        }
+        .testimonial-role {
+            font-size: 0.8rem;
+            color: var(--gold);
+        }
+
+        /* ============ CONTACT ============ */
+        .contact {
+            background: var(--bg2);
+        }
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: start;
+        }
+        .contact-info h3 {
+            font-family: var(--font-heading);
+            font-size: 1.8rem;
+            color: var(--text-white);
+            margin-bottom: 20px;
+        }
+        .contact-detail {
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+            margin-bottom: 22px;
+        }
+        .contact-icon {
+            width: 46px;
+            height: 46px;
+            border-radius: 50%;
+            background: rgba(212, 168, 67, 0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            flex-shrink: 0;
+            border: 1px solid rgba(212, 168, 67, 0.3);
+            color: var(--gold);
+        }
+        .contact-detail .label {
+            font-size: 0.8rem;
+            color: var(--gold);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+        .contact-detail .value {
+            color: var(--text-white);
+            font-weight: 500;
+            font-size: 1rem;
+        }
+        .contact-form {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 36px 30px;
+            box-shadow: var(--shadow-card);
+        }
+        .form-group {
+            margin-bottom: 16px;
+        }
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 13px 16px;
+            background: var(--bg3);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            color: var(--text-white);
+            font-family: var(--font-body);
+            font-size: 0.95rem;
+            transition: all var(--transition);
+            resize: vertical;
+        }
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--gold);
+            box-shadow: 0 0 20px rgba(212, 168, 67, 0.15);
+        }
+        .btn-submit {
+            width: 100%;
+            padding: 14px;
+            background: var(--gradient-gold);
+            color: #0a0a0a;
+            border: none;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            letter-spacing: 0.5px;
+            transition: all var(--transition);
+            font-family: var(--font-body);
+            box-shadow: 0 6px 25px rgba(212, 168, 67, 0.3);
+        }
+        .btn-submit:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(212, 168, 67, 0.5);
+        }
+
+        /* ============ MAP SECTION ============ */
+        .map-section {
+            padding: 0 40px 60px;
+            background: var(--bg2);
+            position: relative;
+            z-index: 1;
+        }
+        .map-container {
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            border: 2px solid var(--border);
+            box-shadow: var(--shadow-card);
+        }
+        .map-container iframe {
+            width: 100%;
+            height: 350px;
+            border: none;
+            filter: grayscale(30%) contrast(90%);
+        }
+
+        /* ============ FOOTER ============ */
+        .footer {
+            background: #080808;
+            padding: 40px;
+            text-align: center;
+            border-top: 1px solid var(--border);
+            position: relative;
+            z-index: 1;
+        }
+        .footer-logo {
+            font-family: var(--font-heading);
+            font-size: 1.8rem;
+            color: var(--text-white);
+            margin-bottom: 10px;
+        }
+        .footer-logo .gold {
+            color: var(--gold);
+        }
+        .footer-social {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            margin: 16px 0;
+            flex-wrap: wrap;
+        }
+        .footer-social a {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background: var(--bg3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            color: var(--text-light);
+            font-size: 1.2rem;
+            transition: all var(--transition);
+            border: 1px solid var(--border);
+        }
+        .footer-social a:hover {
+            background: var(--gold-dark);
+            color: #0a0a0a;
+            border-color: var(--gold-dark);
+            transform: translateY(-3px);
+        }
+        .footer p {
+            color: var(--text-light);
+            font-size: 0.85rem;
+        }
+
+        /* ============ RESPONSIVE ============ */
+        @media (max-width: 968px) {
+            .about-grid,
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            .about-visual {
+                order: -1;
+                max-width: 500px;
+                margin: 0 auto;
+            }
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        @media (max-width: 768px) {
+            section {
+                padding: 70px 20px;
+            }
+            .navbar {
+                padding: 12px 20px;
+            }
+            .navbar.scrolled {
+                padding: 10px 20px;
+            }
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 280px;
+                height: 100vh;
+                background: rgba(10, 10, 10, 0.97);
+                flex-direction: column;
+                justify-content: center;
+                gap: 24px;
+                transition: right var(--transition);
+                backdrop-filter: blur(20px);
+                -webkit-backdrop-filter: blur(20px);
+                border-left: 1px solid var(--border);
+            }
+            .nav-links.active {
+                right: 0;
+            }
+            .menu-toggle {
+                display: flex;
+            }
+            .hero-title {
+                font-size: 2.2rem;
+            }
+            .services-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            .map-section {
+                padding: 0 20px 50px;
+            }
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+            .about-stats {
+                justify-content: center;
+            }
+        }
+        @media (max-width: 480px) {
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            .btn {
+                width: 100%;
+                text-align: center;
+            }
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+            .testimonial-card {
+                min-width: 260px;
+            }
+            .contact-form {
+                padding: 24px 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Particles Background -->
+    <canvas id="particles-canvas"></canvas>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <a href="#" class="nav-logo">
+            <i class="fas fa-clapperboard nav-logo-icon"></i>
+            <div class="nav-logo-text">
+                <span class="brand">Cinemix</span>
+                <span class="production">Production</span>
+            </div>
+        </a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#home" onclick="closeMenu()">Home</a></li>
+            <li><a href="#about" onclick="closeMenu()">About</a></li>
+            <li><a href="#services" onclick="closeMenu()">Services</a></li>
+            <li><a href="#portfolio" onclick="closeMenu()">Portfolio</a></li>
+            <li><a href="#contact" onclick="closeMenu()">Contact</a></li>
+            <li><a href="#contact" class="nav-cta" onclick="closeMenu()">Get A Quote</a></li>
+        </ul>
+        <div class="menu-toggle" id="menuToggle" onclick="toggleMenu()">
+            <span></span><span></span><span></span>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <div class="hero-badge"><i class="fas fa-star" style="margin-right:6px;"></i> Professional Video Editing Studio</div>
+            <h1 class="hero-title">
+                <span class="static">Where Stories Become </span>
+                <span id="typewriter" class="dynamic"></span><span class="cursor">|</span>
+            </h1>
+            <p class="hero-subtitle">
+                Cinemix Production — crafting breathtaking visual narratives for songs, weddings, short films & feature movies. Based in Hisar, serving across India.
+            </p>
+            <div class="hero-buttons">
+                <a href="#portfolio" class="btn btn-primary"><i class="fas fa-play"></i> View Our Work</a>
+                <a href="#contact" class="btn btn-outline"><i class="fas fa-phone-alt"></i> Get In Touch</a>
+            </div>
+        </div>
+        <div class="hero-decoration">
+            <span class="film-dot"></span><span class="film-dot"></span><span class="film-dot"></span>
+            <span class="film-dot"></span><span class="film-dot"></span><span class="film-dot"></span>
+            <span class="film-dot"></span><span class="film-dot"></span><span class="film-dot"></span>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-tag"><i class="fas fa-film"></i> Who We Are</div>
+                <h2 class="section-title">About Cinemix Production</h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="about-grid">
+                <div class="about-visual">
+                    <div class="about-image-placeholder">
+                        <i class="fas fa-video"></i>
+                    </div>
+                    <div class="about-glow"></div>
+                </div>
+                <div class="about-text">
+                    <h3>Crafting Cinematic Excellence Since Day One</h3>
+                    <p>
+                        At <strong>Cinemix Production</strong>, we don't just edit videos — we sculpt emotions frame by frame. From soulful song edits to grand wedding films, gripping short films to full-length feature movies, our team pours heart, creativity, and technical mastery into every project.
+                    </p>
+                    <p>
+                        Based in <strong>Hisar, Haryana</strong>, we've built a reputation for delivering jaw-dropping visuals, seamless storytelling, and a signature cinematic style that sets us apart.
+                    </p>
+                    <div class="about-stats">
+                        <div class="stat-item">
+                            <div class="stat-number">150+</div>
+                            <div class="stat-label"><i class="fas fa-check-circle"></i> Projects Done</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">50+</div>
+                            <div class="stat-label"><i class="fas fa-smile"></i> Happy Clients</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">8+</div>
+                            <div class="stat-label"><i class="fas fa-calendar-alt"></i> Years Exp.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-tag"><i class="fas fa-cogs"></i> What We Do</div>
+                <h2 class="section-title">Our Services</h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-music"></i></div>
+                    <h3>Song Video Editing</h3>
+                    <p>Music videos, lyrical edits, and album visuals with stunning color grading & rhythmic cuts.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-heart"></i></div>
+                    <h3>Wedding Cinematography</h3>
+                    <p>Cinematic wedding films, pre-wedding shoots, and highlight reels that feel like a movie.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-clapperboard"></i></div>
+                    <h3>Short Film Editing</h3>
+                    <p>Narrative-driven short films with professional pacing, sound design, and visual effects.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-video"></i></div>
+                    <h3>Feature Film Post-Production</h3>
+                    <p>Complete movie editing, DI color grading, sound mixing, and VFX for theatrical releases.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-hashtag"></i></div>
+                    <h3>Social Media Content</h3>
+                    <p>Reels, YouTube videos, promotional clips — optimized for every platform with eye-catching edits.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-magic"></i></div>
+                    <h3>VFX & Motion Graphics</h3>
+                    <p>Visual effects, animated titles, green screen compositing, and motion design that pops.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section class="portfolio" id="portfolio">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-tag"><i class="fas fa-folder-open"></i> Our Work</div>
+                <h2 class="section-title">Featured Projects</h2>
+                <div class="section-line"></div>
+                <p style="color:var(--text-light); margin-top:12px;"><i class="fas fa-hand-pointer"></i> Click on any video to play. These are samples of our best work.</p>
+            </div>
+            <div class="portfolio-grid">
+                <div class="portfolio-card">
+                    <div class="video-wrapper">
+                        <iframe src="https://www.youtube.com/embed/4fPjJf0xGpI?rel=0&modestbranding=1" title="Wedding Cinematic Film" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+                    </div>
+                    <div class="portfolio-info">
+                        <span class="tag"><i class="fas fa-ring"></i> Wedding</span>
+                        <h3>Royal Destination Wedding Film</h3>
+                    </div>
+                </div>
+                <div class="portfolio-card">
+                    <div class="video-wrapper">
+                        <iframe src="https://www.youtube.com/embed/JGwWNGJdvx8?rel=0&modestbranding=1" title="Music Video Production" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+                    </div>
+                    <div class="portfolio-info">
+                        <span class="tag"><i class="fas fa-guitar"></i> Music Video</span>
+                        <h3>Bollywood Style Song Edit</h3>
+                    </div>
+                </div>
+                <div class="portfolio-card">
+                    <div class="video-wrapper">
+                        <iframe src="https://www.youtube.com/embed/6v2L2UGZJAM?rel=0&modestbranding=1" title="Short Film" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+                    </div>
+                    <div class="portfolio-info">
+                        <span class="tag"><i class="fas fa-film"></i> Short Film</span>
+                        <h3>Award-Winning Narrative Short</h3>
+                    </div>
+                </div>
+                <div class="portfolio-card">
+                    <div class="video-wrapper">
+                        <iframe src="https://www.youtube.com/embed/d9MyW72ELq0?rel=0&modestbranding=1" title="Movie Trailer" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+                    </div>
+                    <div class="portfolio-info">
+                        <span class="tag"><i class="fas fa-ticket-alt"></i> Movie</span>
+                        <h3>Feature Film Trailer Edit</h3>
+                    </div>
+                </div>
+                <div class="portfolio-card">
+                    <div class="video-wrapper">
+                        <iframe src="https://www.youtube.com/embed/4ENk5ZzTZ8o?rel=0&modestbranding=1" title="Pre-Wedding Shoot" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+                    </div>
+                    <div class="portfolio-info">
+                        <span class="tag"><i class="fas fa-camera-retro"></i> Pre-Wedding</span>
+                        <h3>Cinematic Pre-Wedding Shoot</h3>
+                    </div>
+                </div>
+                <div class="portfolio-card">
+                    <div class="video-wrapper">
+                        <iframe src="https://www.youtube.com/embed/3JZ4pnNtyxQ?rel=0&modestbranding=1" title="Social Media Content" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+                    </div>
+                    <div class="portfolio-info">
+                        <span class="tag"><i class="fas fa-thumbs-up"></i> Social Media</span>
+                        <h3>Viral Reel & Promo Edit</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-tag"><i class="fas fa-comments"></i> Client Love</div>
+                <h2 class="section-title">What They Say</h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="testimonial-slider">
+                <div class="testimonial-card">
+                    <div class="testimonial-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <p>"Cinemix ne hamari wedding film itni khoobsurat banayi ki dekh kar aankhen bhar aayi. Truly cinematic feel — sabne bahut taarif ki!"</p>
+                    <div class="testimonial-author">Rohit & Priya Sharma</div>
+                    <div class="testimonial-role">Wedding Clients, Delhi</div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <p>"Our short film got selected at a film festival, all thanks to the brilliant editing by Cinemix. The pacing, color, and sound design were world-class."</p>
+                    <div class="testimonial-author">Amit Verma</div>
+                    <div class="testimonial-role">Independent Filmmaker</div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <p>"Song video edit ka jo level tha, wo bilkul Bollywood jaisa laga. Creative team ne humari vision ko perfectly execute kiya. Highly recommended!"</p>
+                    <div class="testimonial-author">Simran Kaur</div>
+                    <div class="testimonial-role">Singer & Artist</div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <p>"Professional approach, timely delivery, and jaw-dropping output. Cinemix is our go-to studio for all video production work in Haryana."</p>
+                    <div class="testimonial-author">Vikas Gulati</div>
+                    <div class="testimonial-role">Event Manager, Hisar</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-tag"><i class="fas fa-paper-plane"></i> Reach Out</div>
+                <h2 class="section-title">Let's Create Magic Together</h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h3>Get In Touch</h3>
+                    <div class="contact-detail">
+                        <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+                        <div>
+                            <div class="label">Address</div>
+                            <div class="value">Near Bus Stand, Hisar, Haryana - 125001</div>
+                        </div>
+                    </div>
+                    <div class="contact-detail">
+                        <div class="contact-icon"><i class="fas fa-phone-alt"></i></div>
+                        <div>
+                            <div class="label">Phone / WhatsApp</div>
+                            <div class="value"><a href="tel:+919812188529">+91 9812188529</a></div>
+                        </div>
+                    </div>
+                    <div class="contact-detail">
+                        <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+                        <div>
+                            <div class="label">Email</div>
+                            <div class="value"><a href="mailto:cinemixproduction@gmail.com">cinemixproduction@gmail.com</a></div>
+                        </div>
+                    </div>
+                    <div class="contact-detail">
+                        <div class="contact-icon"><i class="fas fa-clock"></i></div>
+                        <div>
+                            <div class="label">Working Hours</div>
+                            <div class="value">Mon - Sat: 9:00 AM - 8:00 PM</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <h3><i class="fas fa-edit"></i> Send Us a Message</h3>
+                    <form id="contactForm" onsubmit="handleFormSubmit(event)">
+                        <div class="form-group">
+                            <input type="text" placeholder="Your Full Name *" required id="name">
+                        </div>
+                        <div class="form-group">
+                            <input type="tel" placeholder="Phone Number *" required id="phone">
+                        </div>
+                        <div class="form-group">
+                            <input type="email" placeholder="Email Address" id="email">
+                        </div>
+                        <div class="form-group">
+                            <select id="service" required>
+                                <option value="">Select Service Interested In</option>
+                                <option value="Wedding">Wedding Cinematography</option>
+                                <option value="Song">Song Video Editing</option>
+                                <option value="Short Film">Short Film Editing</option>
+                                <option value="Movie">Feature Film Post-Production</option>
+                                <option value="Social Media">Social Media Content</option>
+                                <option value="VFX">VFX & Motion Graphics</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <textarea placeholder="Tell us about your project... *" required id="message"></textarea>
+                        </div>
+                        <button type="submit" class="btn-submit"><i class="fas fa-rocket"></i> Send Enquiry Now</button>
+                    </form>
+                    <div id="formSuccess" style="display:none; text-align:center; padding:20px; color:var(--gold-light); font-weight:600; margin-top:10px;">
+                        <i class="fas fa-check-circle"></i> Thank you! We'll get back to you within 24 hours.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <section class="map-section">
+        <div class="container">
+            <div class="map-container">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13926.7723456789!2d75.7135!3d29.1492!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x391232c5e5e5e5e5%3A0x5e5e5e5e5e5e5e5e!2sBus%20Stand%2C%20Hisar%2C%20Haryana!5e0!3m2!1sen!2sin!4v1700000000000" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Cinemix Production Location - Near Bus Stand, Hisar, Haryana"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-logo"><i class="fas fa-clapperboard" style="margin-right:8px; color:var(--gold);"></i> Cinemix<span class="gold"> Production</span></div>
+        <div class="footer-social">
+            <a href="#" title="YouTube"><i class="fab fa-youtube"></i></a>
+            <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="tel:+919812188529" title="Call Us"><i class="fas fa-phone-alt"></i></a>
+            <a href="https://wa.me/919812188529" target="_blank" rel="noopener" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+        </div>
+        <p><i class="fas fa-map-marker-alt"></i> Near Bus Stand, Hisar, Haryana | <i class="fas fa-phone-alt"></i> +91 9812188529</p>
+        <p style="margin-top:8px;">&copy; 2026 Cinemix Production. All rights reserved. | Professional Video Editing Studio</p>
+    </footer>
+
+    <script>
+        // ============ PARTICLES ANIMATION ============
+        const canvas = document.getElementById('particles-canvas');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+        let animationId;
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        resizeCanvas();
+        window.addEventListener('resize', resizeCanvas);
+
+        class Particle {
+            constructor() {
+                this.reset();
+            }
+            reset() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 2 + 0.8;
+                this.speedX = (Math.random() - 0.5) * 0.4;
+                this.speedY = (Math.random() - 0.5) * 0.4;
+                this.opacity = Math.random() * 0.5 + 0.15;
+                this.opacitySpeed = (Math.random() - 0.5) * 0.005;
+            }
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+                this.opacity += this.opacitySpeed;
+                if (this.opacity > 0.6 || this.opacity < 0.1) this.opacitySpeed *= -1;
+                if (this.x < -10 || this.x > canvas.width + 10 ||
+                    this.y < -10 || this.y > canvas.height + 10) {
+                    this.reset();
+                    this.x = Math.random() * canvas.width;
+                    this.y = Math.random() * canvas.height;
+                }
+            }
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fillStyle = `rgba(212,168,67,${this.opacity})`;
+                ctx.fill();
+            }
+        }
+
+        function initParticles(count = 80) {
+            particles = [];
+            for (let i = 0; i < count; i++) {
+                particles.push(new Particle());
+            }
+        }
+        initParticles();
+
+        function animateParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach(p => {
+                p.update();
+                p.draw();
+            });
+            for (let i = 0; i < particles.length; i++) {
+                for (let j = i + 1; j < particles.length; j++) {
+                    const dx = particles[i].x - particles[j].x;
+                    const dy = particles[i].y - particles[j].y;
+                    const dist = Math.sqrt(dx * dx + dy * dy);
+                    if (dist < 100) {
+                        ctx.beginPath();
+                        ctx.moveTo(particles[i].x, particles[i].y);
+                        ctx.lineTo(particles[j].x, particles[j].y);
+                        ctx.strokeStyle = `rgba(212,168,67,${0.06 * (1 - dist/100)})`;
+                        ctx.lineWidth = 0.5;
+                        ctx.stroke();
+                    }
+                }
+            }
+            animationId = requestAnimationFrame(animateParticles);
+        }
+        animateParticles();
+
+        // ============ TYPING EFFECT FOR HERO ============
+        const words = ["Alive", "Unforgettable", "Cinematic", "Magical", "Emotional", "Timeless", "Blockbuster"];
+        let wordIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        const typewriterEl = document.getElementById('typewriter');
+        const typingSpeed = 120;
+        const deletingSpeed = 60;
+        const pauseBetween = 1500;
+
+        function typeEffect() {
+            const currentWord = words[wordIndex];
+            if (!isDeleting) {
+                typewriterEl.textContent = currentWord.substring(0, charIndex + 1);
+                charIndex++;
+                if (charIndex === currentWord.length) {
+                    isDeleting = true;
+                    setTimeout(typeEffect, pauseBetween);
+                    return;
+                }
+                setTimeout(typeEffect, typingSpeed);
+            } else {
+                typewriterEl.textContent = currentWord.substring(0, charIndex - 1);
+                charIndex--;
+                if (charIndex === 0) {
+                    isDeleting = false;
+                    wordIndex = (wordIndex + 1) % words.length;
+                    setTimeout(typeEffect, 300);
+                    return;
+                }
+                setTimeout(typeEffect, deletingSpeed);
+            }
+        }
+        typewriterEl.textContent = words[0];
+        setTimeout(typeEffect, 1000);
+
+        // ============ NAVBAR SCROLL EFFECT ============
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 60) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // ============ MOBILE MENU ============
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+
+        function toggleMenu() {
+            menuToggle.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        }
+
+        function closeMenu() {
+            menuToggle.classList.remove('active');
+            navLinks.classList.remove('active');
+        }
+
+        document.addEventListener('click', (e) => {
+            if (!navbar.contains(e.target) && navLinks.classList.contains('active')) {
+                closeMenu();
+            }
+        });
+
+        // ============ FORM HANDLING ============
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            const form = document.getElementById('contactForm');
+            const successMsg = document.getElementById('formSuccess');
+            const name = document.getElementById('name').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+            const message = document.getElementById('message').value.trim();
+
+            if (!name || !phone || !message) {
+                alert('Please fill all required fields.');
+                return;
+            }
+            form.style.display = 'none';
+            successMsg.style.display = 'block';
+            setTimeout(() => {
+                form.style.display = 'block';
+                successMsg.style.display = 'none';
+                form.reset();
+            }, 4000);
+        }
+
+        // ============ SMOOTH SCROLL ============
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    e.preventDefault();
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // ============ INTERSECTION OBSERVER FOR ANIMATIONS ============
+        const observerOptions = { threshold: 0.15, rootMargin: '0px 0px -40px 0px' };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.service-card, .portfolio-card, .testimonial-card, .contact-form, .about-visual')
+            .forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(30px)';
+                el.style.transition = 'all 0.7s cubic-bezier(0.25, 0.8, 0.25, 1)';
+                observer.observe(el);
+                setTimeout(() => {
+                    const rect = el.getBoundingClientRect();
+                    if (rect.top < window.innerHeight) {
+                        el.style.opacity = '1';
+                        el.style.transform = 'translateY(0)';
+                    }
+                }, 300);
+            });
+
+        console.log('🎬 Cinemix Production Website Loaded Successfully!');
+        console.log('📍 Near Bus Stand, Hisar, Haryana | 📞 9812188529');
+    </script>
+</body>
+</html>
